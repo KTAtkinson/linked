@@ -1,10 +1,11 @@
 package llist
 
 import (
+    "github.com/KTAtkinson/linked/node"
+    "github.com/KTAtkinson/linked"
 	"testing"
 )
 
-import "github.com/KTAtkinson/linked/node"
 
 func generateCases() []struct{ numNodes int } {
 	cases := []struct {
@@ -19,7 +20,7 @@ func generateCases() []struct{ numNodes int } {
 	return cases
 }
 
-func generateLinks(numNodes int) (head *node.Dnode, tail *node.Dnode) {
+func generateLinks(numNodes int) (head linked.Noder, tail linked.Noder) {
 	if numNodes > 0 {
 		head = new(node.Dnode)
 		head.SetData(0)
@@ -50,13 +51,7 @@ func TestAppend(t *testing.T) {
 	cases := generateCases()
 	for _, c := range cases {
 		head, tail := generateLinks(c.numNodes)
-		linkedList := new(List)
-		if head != nil {
-			linkedList.head = head
-		}
-		if tail != nil {
-			linkedList.tail = tail
-		}
+		linkedList := &List{head: head, tail: tail}
 		newNode := new(node.Dnode)
 		newNode.SetData(c.numNodes+1)
 

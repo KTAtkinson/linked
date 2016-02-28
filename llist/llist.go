@@ -27,7 +27,15 @@ func (l *List) Append(n linked.Noder) (err error) {
 
 // Push adds the given node as the head of the list.
 func (l *List) Push(n linked.Noder) (err error) {
-    
+    if l.tail == nil {
+        l.tail = n
+    }
+    if l.head != nil {
+        n.SetNext(l.head)
+        l.head.SetPrev(n)
+    }
+
+    l.head = n
 	return err
 }
 
