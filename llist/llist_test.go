@@ -4,6 +4,7 @@ import (
     "github.com/KTAtkinson/linked/node"
     "github.com/KTAtkinson/linked"
 	"testing"
+    "fmt"
 )
 
 
@@ -104,6 +105,7 @@ func TestPush(t *testing.T) {
 func TestPop(t *testing.T) {
 	cases := generateCases()
 	for _, c := range cases {
+        fmt.Println(c.numNodes)
 		head, tail := generateLinks(c.numNodes)
 		linkedList := &List{head: head, tail: tail}
 
@@ -121,5 +123,5 @@ func TestPop(t *testing.T) {
 					head, popped)
 			}
 		}
-	}
+    }
 }
