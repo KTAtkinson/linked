@@ -3,7 +3,9 @@ Provides an interface and class for making linked lists.
 */
 package llist
 
-import "github.com/KTAtkinson/linked"
+import (
+	"github.com/KTAtkinson/linked"
+)
 
 type List struct {
 	head linked.Noder
@@ -12,6 +14,14 @@ type List struct {
 
 // Append adds the given node as the tail of the list.
 func (l *List) Append(n linked.Noder) (err error) {
+	if l.head != nil {
+		l.head.SetPrev(n)
+		n.SetNext(l.head)
+	} else {
+		l.tail = n
+	}
+
+	l.head = n
 	return err
 }
 
