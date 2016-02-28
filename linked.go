@@ -10,11 +10,11 @@ type Lister interface {
 }
 
 type Noder interface {
-	Data() interface{}
+	Data() (interface{}, error)
 	Next() (Noder, bool, error)
 	Prev() (Noder, bool, error)
 
-	SetData(interface{})
-	SetNext(Noder, error)
-	SetPrev(Noder, error)
+	SetData(interface{}) error
+	SetNext(Noder) error
+	SetPrev(Noder) error
 }
