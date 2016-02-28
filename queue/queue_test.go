@@ -4,13 +4,11 @@ import (
     "testing"
     "github.com/KTAtkinson/linked/node"
     "github.com/KTAtkinson/linked/llist"
-    "fmt"
 )
 
 func TestEnqueue(t *testing.T) {
     value := 5
     q := new(Q)
-    fmt.Printf("QUEUE: %#v\n", q)
     q.Enqueue(value)
     popped, _ := q.linkedList.Pop()
 

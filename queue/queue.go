@@ -6,7 +6,6 @@ package queue
 import (
     "github.com/KTAtkinson/linked/node"
     "github.com/KTAtkinson/linked/llist"
-    "fmt"
 )
 
 type Q struct {
@@ -21,7 +20,6 @@ func (q *Q) Enqueue(v interface{}) (err error) {
         q.linkedList = new(llist.List)
     }
     q.linkedList.Append(newNode)
-    fmt.Printf("LINKED LIST: %#v", q.linkedList)
     return err
 }
 
