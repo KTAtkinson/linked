@@ -15,9 +15,10 @@ type List struct {
 
 // Append adds the given node as the tail of the list.
 func (l *List) Append(n linked.Noder) (err error) {
-	if l.head == nil {
+    fmt.Printf("LINKED LIST: %#v", l)
+    if l.head == nil {
         l.head = n
-	} 
+    }
     if l.tail != nil {
         n.SetPrev(l.tail)
         l.tail.SetNext(n)
