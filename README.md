@@ -1,1 +1,3 @@
-Simple implementation of linked lists and doubly-linked lists in go.
+Implementation of linked lists and queues in Go.
+
+-- To come: stacks, 'hasNext' function for linked lists.
