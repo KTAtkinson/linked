@@ -6,7 +6,6 @@ package llist
 import (
 	"github.com/KTAtkinson/linked"
     "errors"
-    "fmt"
 )
 type List struct {
 	head linked.Noder
@@ -15,7 +14,6 @@ type List struct {
 
 // Append adds the given node as the tail of the list.
 func (l *List) Append(n linked.Noder) (err error) {
-    fmt.Printf("LINKED LIST: %#v", l)
     if l.head == nil {
         l.head = n
     }
@@ -43,7 +41,6 @@ func (l *List) Push(n linked.Noder) (err error) {
 
 // Pop returns the node at the head of the list.
 func (l *List) Pop() (n linked.Noder, err error) {
-    fmt.Printf("LIST: %#v \n", l)
     if l.head == nil {
         return n, errors.New("Can't pop from an empty list.")
     }
