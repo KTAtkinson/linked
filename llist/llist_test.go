@@ -1,12 +1,11 @@
 package llist
 
 import (
-    "github.com/KTAtkinson/linked/node"
-    "github.com/KTAtkinson/linked"
+	"fmt"
+	"github.com/KTAtkinson/linked"
+	"github.com/KTAtkinson/linked/node"
 	"testing"
-    "fmt"
 )
-
 
 func generateCases() []struct{ numNodes int } {
 	cases := []struct {
@@ -25,7 +24,7 @@ func generateLinks(numNodes int) (head linked.Noder, tail linked.Noder) {
 	if numNodes > 0 {
 		head = new(node.Dnode)
 		head.SetData(0)
-        tail = head
+		tail = head
 	}
 
 	lastNode := head
@@ -40,7 +39,7 @@ func generateLinks(numNodes int) (head linked.Noder, tail linked.Noder) {
 
 	if numNodes > 1 {
 		tail = new(node.Dnode)
-		tail.SetData(numNodes-1)
+		tail.SetData(numNodes - 1)
 		lastNode.SetNext(tail)
 		tail.SetPrev(lastNode)
 	}
@@ -54,7 +53,7 @@ func TestAppend(t *testing.T) {
 		head, tail := generateLinks(c.numNodes)
 		linkedList := &List{head: head, tail: tail}
 		newNode := new(node.Dnode)
-		newNode.SetData(c.numNodes+1)
+		newNode.SetData(c.numNodes + 1)
 
 		linkedList.Append(newNode)
 		if linkedList.tail != newNode {
@@ -64,18 +63,18 @@ func TestAppend(t *testing.T) {
 		if tail != nil {
 			if prev, _, _ := newNode.Prev(); prev != tail {
 				t.Errorf("Exected %#v to preceed the new node, found %#v.",
-                         tail, prev)
+					tail, prev)
 			}
 
 			if next, _, _ := tail.Next(); next != newNode {
 				t.Errorf("Found %#v next to tail, expected %#v.", next, newNode)
 			}
 		} else {
-            if linkedList.head != newNode {
-                t.Errorf("When list was empty expected head to be %#v, found %#v",
-                         newNode, linkedList.head)
-            }
-        }
+			if linkedList.head != newNode {
+				t.Errorf("When list was empty expected head to be %#v, found %#v",
+					newNode, linkedList.head)
+			}
+		}
 	}
 }
 
@@ -96,7 +95,7 @@ func TestPush(t *testing.T) {
 				t.Error("The old tail does not refer to the new node.")
 			}
 			if prev, _, _ := head.Prev(); prev != newNode {
-		    	t.Error("The new node does not refer to the tail.")
+				t.Error("The new node does not refer to the tail.")
 			}
 		}
 	}
@@ -105,7 +104,7 @@ func TestPush(t *testing.T) {
 func TestPop(t *testing.T) {
 	cases := generateCases()
 	for _, c := range cases {
-        fmt.Println(c.numNodes)
+		fmt.Println(c.numNodes)
 		head, tail := generateLinks(c.numNodes)
 		linkedList := &List{head: head, tail: tail}
 
@@ -123,5 +122,5 @@ func TestPop(t *testing.T) {
 					head, popped)
 			}
 		}
-    }
+	}
 }
