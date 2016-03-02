@@ -1,3 +1,3 @@
 Implementation of linked lists and queues in Go.
 
--- To come: stacks, 'hasNext' function for linked lists.
+-- To come: stacks, trees, 'hasNext' function for linked lists.
