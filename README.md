@@ -1,3 +1,7 @@
-Implementation of linked lists and queues in Go.
+###Linked
+Implementation of linked lists and queues in Go. This is a learning exercise intended to help me learn about linked lists, stacks and queues.
 
--- To come: stacks, trees, 'hasNext' function for linked lists.
+##Features to come
+- Stacks
+- Trees
+- 'hasNext' function for linked lists.
