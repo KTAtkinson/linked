@@ -1,7 +1,6 @@
 package llist
 
 import (
-	"fmt"
 	"github.com/KTAtkinson/linked"
 	"github.com/KTAtkinson/linked/node"
 	"testing"
@@ -104,7 +103,6 @@ func TestPush(t *testing.T) {
 func TestPop(t *testing.T) {
 	cases := generateCases()
 	for _, c := range cases {
-		fmt.Println(c.numNodes)
 		head, tail := generateLinks(c.numNodes)
 		linkedList := &List{head: head, tail: tail}
 
@@ -121,6 +119,38 @@ func TestPop(t *testing.T) {
 				t.Errorf("Expected %d to be popped off the list, found %d",
 					head, popped)
 			}
+		}
+	}
+}
+
+func TestReverse(t *testing.T) {
+	cases := generateCases()
+	for _, c := range cases {
+		if c.numNodes < 1 {
+			continue
+		}
+		head, tail := generateLinks(c.numNodes)
+		linkedList := &List{head: head, tail: tail}
+		oldSecondToLast, _, _ := linkedList.tail.Prev()
+
+		linkedList.Reverse()
+		if linkedList.head != tail {
+			t.Error("The old head is not the new tail.")
+		}
+		if linkedList.tail != head {
+			t.Error("The old tail is not the new head.")
+		}
+
+		afterTail, _, _ := linkedList.tail.Next()
+		if afterTail != nil {
+			t.Errorf("Expected next after the new tail  to be nil, found %#v.",
+				afterTail)
+		}
+
+		newSecond, _, _ := linkedList.head.Next()
+		if newSecond != oldSecondToLast {
+			t.Errorf("Expected to find %#v in spot 1, found %#v.",
+				oldSecondToLast, newSecond)
 		}
 	}
 }
