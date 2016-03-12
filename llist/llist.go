@@ -55,3 +55,22 @@ func (l *List) Pop() (n linked.Noder, err error) {
 	l.head = newHead
 	return oldHead, err
 }
+
+// Reverse reverses the current linked list in place.
+func (l *List) Reverse() (err error) {
+	next := l.head
+	l.head = nil
+	l.tail = nil
+
+	for next != nil {
+		newNext, _, _ := next.Next()
+
+		next.SetNext(nil)
+		next.SetPrev(nil)
+		l.Push(next)
+
+		next = newNext
+	}
+
+	return err
+}
